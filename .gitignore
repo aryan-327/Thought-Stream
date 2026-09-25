@@ -25,3 +25,8 @@ dist-ssr
 
 # Firebase
 .firebase/
+
+# Environment variables — never commit these!
+.env
+.env.local
+.env.*.local
