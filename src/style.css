@@ -1,5 +1,5 @@
 :root {
-    --bg-gradient: linear-gradient(135deg, #c04604 0%, #5b1400 100%);
+    --bg-gradient: linear-gradient(135deg, #cf5c1e 0%, #5b1400 100%);
     --glass-bg: rgba(255, 255, 255, 0.25);
     --glass-border: rgba(255, 255, 255, 0.18);
     --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
@@ -7,8 +7,8 @@
     --text-main: #2d3436;
     --text-muted: #636e72;
 
-    --accent: #ff7675;
-    --accent-hover: #d63031;
+    --accent: #e78207;
+    --accent-hover: #e9ae0c;
 
     /* Sticky note colors */
     --note-1: #ffef96;
