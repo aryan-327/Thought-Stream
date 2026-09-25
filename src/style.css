@@ -1,0 +1,338 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    
+    --accent: #ff7675;
+    --accent-hover: #d63031;
+    
+    /* Sticky note colors */
+    --note-1: #ffef96;
+    --note-2: #ffc4d0;
+    --note-3: #c1e3ff;
+    --note-4: #cbf078;
+    --note-5: #ffb8b8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-attachment: fixed;
+}
+
+/* Fonts */
+.font-outfit { font-family: 'Outfit', sans-serif; font-size: 1.1rem; }
+.font-handwritten { font-family: 'Caveat', cursive; font-size: 1.6rem; }
+.font-typewriter { font-family: 'Courier Prime', monospace; font-size: 1rem; }
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--glass-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+/* Compose Section */
+.compose-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0.8rem;
+}
+
+/* Note Composer — looks like a real sticky note */
+.note-composer {
+    background: var(--note-1);
+    border-radius: 4px 16px 16px 16px;
+    box-shadow: 3px 5px 15px rgba(0,0,0,0.15), inset 0 -15px 15px -15px rgba(0,0,0,0.15);
+    overflow: hidden;
+    position: relative;
+}
+
+.note-composer-body {
+    padding: 1.2rem 1.5rem 1rem;
+}
+
+#thought-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 1.1rem;
+    resize: none;
+    outline: none;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+#thought-input::placeholder { color: #999; }
+
+/* Dashed line divider separating the two sections */
+.note-composer-divider {
+    border: none;
+    border-top: 2px dashed rgba(0,0,0,0.15);
+    margin: 0 1.5rem;
+}
+
+/* Section 2 — Author name */
+.note-composer-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+}
+
+.from-label {
+    font-size: 0.9rem;
+    color: #888;
+    white-space: nowrap;
+    font-style: italic;
+}
+
+#author-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+#author-input::placeholder { color: #bbb; }
+
+.customization-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+    background: rgba(255,255,255,0.4);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.color-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.color-picker span, .font-picker span {
+    font-weight: 600;
+    margin-right: 0.5rem;
+}
+
+.color-radio {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--rc);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.color-radio:hover {
+    transform: scale(1.1);
+}
+
+.color-radio input {
+    display: none;
+}
+
+.color-radio:has(input:checked) {
+    border-color: #fff;
+    box-shadow: 0 0 0 3px var(--accent);
+    transform: scale(1.1);
+}
+
+.font-picker select {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: white;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+}
+
+/* (layout handled by .note-composer-footer above) */
+
+#submit-btn {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.1s ease;
+}
+
+#submit-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+#submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Thought Wall */
+.thought-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    padding-top: 1rem;
+}
+
+/* Realistic Sticky Note styling */
+.thought-card {
+    background: var(--note-1);
+    padding: 2rem 1.5rem 1.5rem;
+    margin: 10px;
+    /* Dog ear effect */
+    border-bottom-right-radius: 30px 5px;
+    border-bottom-left-radius: 5px 30px;
+    
+    /* Realism shadow */
+    box-shadow: 
+        2px 2px 10px rgba(0,0,0,0.1), 
+        inset 0 -15px 15px -15px rgba(0,0,0,0.2);
+    
+    position: relative;
+    transition: transform 0.3s ease, z-index 0s;
+    animation: fadeInScale 0.4s ease-out forwards;
+    transform: rotate(var(--card-rot, 0deg));
+}
+
+/* The drop shadow at the bottom for peel effect */
+.thought-card::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 10px;
+    right: 15px;
+    width: 70%;
+    top: 80%;
+    box-shadow: 0 15px 15px rgba(0,0,0,0.3);
+    transform: rotate(4deg);
+}
+
+/* Pin effect at the top */
+.thought-card::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 25px;
+    background: #e74c3c;
+    border-radius: 50%;
+    box-shadow: 
+        inset -3px -3px 6px rgba(0,0,0,0.3),
+        3px 3px 6px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.thought-card:hover {
+    transform: scale(1.05) translateY(-10px) rotate(0deg);
+    z-index: 10;
+}
+
+.thought-text {
+    line-height: 1.6;
+    margin-bottom: 0;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    min-height: 80px;
+    padding: 1.5rem 1.5rem 1rem;
+}
+
+/* Dashed divider — mirrors the compose form */
+.thought-divider {
+    border: none;
+    border-top: 2px dashed rgba(0,0,0,0.15);
+    margin: 0 1.5rem;
+}
+
+.thought-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0.7rem 1.5rem 1rem;
+    font-family: 'Outfit', sans-serif;
+}
+
+.thought-author {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+/* Note colors */
+.note-color-0 { background: var(--note-1); }
+.note-color-1 { background: var(--note-2); }
+.note-color-2 { background: var(--note-3); }
+.note-color-3 { background: var(--note-4); }
+.note-color-4 { background: var(--note-5); }
+
+/* Animations */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px) rotate(var(--card-rot, 0deg));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) rotate(var(--card-rot, 0deg));
+    }
+}

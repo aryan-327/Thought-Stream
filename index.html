@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Thought Stream - A real-time thought wall" />
+    <title>Thought Stream</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Courier+Prime:ital,wght@0,400;0,700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="glass-panel header">
+            <h1>💭 Thought Stream</h1>
+            <p>Share your ideas in real-time with the world.</p>
+        </header>
+
+        <main>
+            <section class="glass-panel compose-section">
+                <p class="compose-label">✍️ Write your thought</p>
+                <div class="note-composer">
+                    <form id="thought-form">
+                        <!-- Section 1: Message -->
+                        <div class="note-composer-body">
+                            <textarea 
+                                id="thought-input" 
+                                placeholder="What's on your mind?" 
+                                required 
+                                rows="4"
+                            ></textarea>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="note-composer-divider"></div>
+
+                        <!-- Section 2: Author name (required) -->
+                        <div class="note-composer-footer">
+                            <span class="from-label">— From</span>
+                            <input 
+                                type="text" 
+                                id="author-input" 
+                                placeholder="Your name" 
+                                required
+                            />
+                        </div>
+
+                        <!-- Customization options below the note -->
+                        <div class="customization-options">
+                            <div class="color-picker">
+                                <span>🎨 Color</span>
+                                <label class="color-radio" style="--rc: var(--note-1)"><input type="radio" name="note-color" value="0" checked></label>
+                                <label class="color-radio" style="--rc: var(--note-2)"><input type="radio" name="note-color" value="1"></label>
+                                <label class="color-radio" style="--rc: var(--note-3)"><input type="radio" name="note-color" value="2"></label>
+                                <label class="color-radio" style="--rc: var(--note-4)"><input type="radio" name="note-color" value="3"></label>
+                                <label class="color-radio" style="--rc: var(--note-5)"><input type="radio" name="note-color" value="4"></label>
+                            </div>
+                            <div class="font-picker">
+                                <span>✒️ Font</span>
+                                <select id="font-select">
+                                    <option value="font-outfit">Modern</option>
+                                    <option value="font-handwritten">Handwritten</option>
+                                    <option value="font-typewriter">Typewriter</option>
+                                </select>
+                            </div>
+                            <button type="submit" id="submit-btn">Post Thought</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section class="wall-section">
+                <div id="thought-wall" class="thought-grid">
+                    <!-- Thoughts will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
